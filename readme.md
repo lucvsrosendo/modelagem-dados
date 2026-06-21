@@ -12,7 +12,6 @@ Este repositório contém a resolução do desafio de modelagem de banco de dado
 
 Abaixo está o modelo conceitual desenvolvido:
 
-```mermaid
 erDiagram
     Cliente {
         int id_cliente PK
@@ -23,12 +22,12 @@ erDiagram
     }
     
     Cliente_PF {
-        int id_cliente PK "FK"
+        int id_cliente PK
         string cpf
     }
     
     Cliente_PJ {
-        int id_cliente PK "FK"
+        int id_cliente PK
         string cnpj
         string razao_social
     }
@@ -54,9 +53,8 @@ erDiagram
         string codigo_rastreio
     }
 
-    %% Relacionamentos
-    Cliente ||--o| Cliente_PF : "é um (PF)"
-    Cliente ||--o| Cliente_PJ : "é um (PJ)"
+    Cliente ||--o| Cliente_PF : "e um PF"
+    Cliente ||--o| Cliente_PJ : "e um PJ"
     Cliente ||--|{ Forma_Pagamento : "cadastra"
     Cliente ||--|{ Pedido : "realiza"
     Pedido ||--|| Entrega : "gera"
