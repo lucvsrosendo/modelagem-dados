@@ -5,13 +5,16 @@ Este repositório contém a resolução do desafio de modelagem de banco de dado
 ### 🛠️ Implementações Realizadas:
 
 * **Cliente PJ e PF:** Foi utilizada a abordagem de especialização/generalização. Criamos uma entidade genérica `Cliente` que contém os dados comuns, ramificando para `Cliente_PF` (com CPF) e `Cliente_PJ` (com CNPJ). Isso garante que uma conta seja física ou jurídica, de forma exclusiva.
+
 * **Múltiplas Formas de Pagamento:** Foi criada a entidade `Forma_Pagamento` com relacionamento de 1:N com a entidade `Cliente`. Isso permite que um mesmo usuário cadastre diferentes métodos de pagamento.
+
 * **Gestão de Entregas:** A entidade `Entrega` foi criada e associada diretamente à entidade `Pedido` (relacionamento 1:1). Nela, foram inseridos os atributos `status_entrega` e `codigo_rastreio`, garantindo o acompanhamento logístico de cada compra.
 
 ### 📊 Diagrama de Entidade-Relacionamento (DER)
 
 Abaixo está o modelo conceitual desenvolvido:
 
+```mermaid
 erDiagram
     Cliente {
         int id_cliente PK
@@ -58,3 +61,4 @@ erDiagram
     Cliente ||--|{ Forma_Pagamento : "cadastra"
     Cliente ||--|{ Pedido : "realiza"
     Pedido ||--|| Entrega : "gera"
+```
